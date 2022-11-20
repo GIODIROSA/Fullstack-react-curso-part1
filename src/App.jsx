@@ -1,10 +1,13 @@
 import FormularioNoControlado from "./component/FormularioNoControlado";
+import Formulario from "./component/Formulario";
 
 //FORMULARIO NO CONTROLADOS
 function App() {
   return (
     <>
-      <FormularioNoControlado />
+      <h2>Formularios</h2>
+      {/* <FormularioNoControlado /> */}
+      <Formulario />
     </>
   );
 }
