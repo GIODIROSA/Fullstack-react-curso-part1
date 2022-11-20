@@ -8,8 +8,27 @@ const Formulario = () => {
     todoCheck: false,
   });
 
+  const [error, setError] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    // las validation es en el handleSubmit
+
+    const { todoName, todoDescripcion } = todo;
+
+    if (!todoName.trim() || !todoDescripcion.trim()) {
+      setError(true);
+      return;
+    }
+
+    setError(false);
+
+    setTodo({
+      todoName: "",
+      todoDescripcion: "",
+      todoEstado: "pendiente",
+      todoCheck: false,
+    });
   };
 
   const handleChange = (e) => {
@@ -32,9 +51,15 @@ const Formulario = () => {
     // }));
   };
 
+  const PintarError = () => {
+    return <div className="alert alert-danger">Campos Obligatorios</div>;
+  };
+
   return (
     <>
       <h2>Formulario Controlado</h2>
+      {/* {error ? <PintarError /> : null} */}
+      {error && <PintarError />}
       <form className="containerForm" onSubmit={handleSubmit}>
         <input
           className="form-control mb-2"
