@@ -1,14 +1,16 @@
 import FormularioNoControlado from "./component/FormularioNoControlado";
 import Formulario from "./component/Formulario";
+import TodoList from "./component/TodoList";
 
-//FORMULARIO NO CONTROLADOS
+// Aplicacion/ todo TodoList. aterrizar aprendizaje
 function App() {
   return (
-    <>
-      <h2>Formularios</h2>
+    <div className="container">
+      <h2>APP</h2>
       {/* <FormularioNoControlado /> */}
-      <Formulario />
-    </>
+      {/* <Formulario /> */}
+      <TodoList />
+    </div>
   );
 }
 
