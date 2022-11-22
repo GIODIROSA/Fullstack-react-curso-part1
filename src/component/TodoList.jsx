@@ -1,5 +1,11 @@
+import Formulario2 from "./Formulario2";
+
 const TodoList = () => {
-  return <div>{/* <h2>TODOlIST</h2> */}</div>;
+  return (
+    <>
+      <Formulario2 />
+    </>
+  );
 };
 
 export default TodoList;
