@@ -64,7 +64,7 @@ const Formulario2 = () => {
 
   return (
     <div>
-      <h3>Formulario</h3>
+      <h3>Formulario app</h3>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
