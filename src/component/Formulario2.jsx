@@ -1,8 +1,9 @@
 import { useState } from "react";
+import {v4 as uuidv4} from "uuid"
 
 import Swal from "sweetalert2";
 
-const Formulario2 = () => {
+const Formulario2 = ({ agregarTodo }) => {
   // INICIALIZANDO LA COLECCION
 
   const inicialState = {
@@ -56,6 +57,15 @@ const Formulario2 = () => {
       });
       return;
     }
+
+    //agregar todo
+    agregarTodo({
+      nombre,
+      descripcion,
+      estado: estado === "pendiente" ? false : true,
+      prioridad,
+      id: uuidv4(),
+    });
 
     Swal.fire("EXCELENTE!", "Lo lograste..!", "success");
 
