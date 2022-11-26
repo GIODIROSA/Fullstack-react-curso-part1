@@ -1,7 +1,8 @@
-import { useState } from "react";
-import {v4 as uuidv4} from "uuid"
-
+import { v4 as uuidv4 } from "uuid";
 import Swal from "sweetalert2";
+import { useFormulario } from "../hooks/useFormulario";
+import { useState } from "react";
+
 
 const Formulario2 = ({ agregarTodo }) => {
   // INICIALIZANDO LA COLECCION
@@ -13,29 +14,18 @@ const Formulario2 = ({ agregarTodo }) => {
     prioridad: false,
   };
 
-  // HOOK STATE
+  // HOOK CUSTOM
 
-  const [todo, setTodo] = useState(inicialState);
+  const [inputs, handleChange, reset] = useFormulario(inicialState);
 
-  const { nombre, descripcion, estado, prioridad } = todo;
-
-  //HANDLE CHANGE
-
-  const handleChange = (e) => {
-    const { name, type, checked, value } = e.target;
-
-    setTodo((old) => ({
-      ...old,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  };
+  const { nombre, descripcion, estado, prioridad } = inputs;
 
   //HANDLE SUBMIT
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(todo);
+   
 
     if (!nombre.trim()) {
       e.target[0].focus();
@@ -69,7 +59,7 @@ const Formulario2 = ({ agregarTodo }) => {
 
     Swal.fire("EXCELENTE!", "Lo lograste..!", "success");
 
-    setTodo(inicialState);
+    reset();
   };
 
   return (
