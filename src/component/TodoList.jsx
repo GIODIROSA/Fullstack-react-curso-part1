@@ -3,33 +3,24 @@ import Formulario2 from "./Formulario2";
 import Todo from "./Todo";
 
 const TodoList = () => {
-  const [todos, setTodos] = useState([]);
+  // const [todos, setTodos] = useState([]);
 
-  // AVERIGUAR
-  // ====================
+  const [todos, setTodos] = useState(() => {
+    const enMemoria = localStorage.getItem("todos");
+    const initialValue = JSON.parse(enMemoria);
+    return initialValue || "";
+  });
 
-  // const [todos, setTodos] = useState(() => {
-
-  //   const enMemoria = localStorage.getItem('todos')
-
-  //   const initialValue = JSON.parse(enMemoria)
-
-  //   return initialValue || ''
-
-  // })
-
-  // ==========================
-
-  //   useEffect(() => {
-  //     console.log("Leer todos local");
-  //     if (localStorage.getItem("todos")) {
-  //         setTodos(JSON.parse(localStorage.getItem("todos")));
-  //     }
+  // useEffect(() => {
+  //   console.log("Leer todos local");
+  //   if (localStorage.getItem("todos")) {
+  //     setTodos(JSON.parse(localStorage.getItem("todos")));
+  //   }
   // }, []);
 
   useEffect(() => {
     console.log("Guardar todo local");
-    localStorage.setItem("todos", JSON.stringify());
+    localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
   // ==========================
